@@ -1,0 +1,128 @@
+* {
+	font-family:arial;
+}
+body {
+	margin:0px;
+	background:#EEE;
+}
+
+/*all*/
+header, nav {
+	position:relative;
+	float:left;
+	width:100%;
+}
+
+/*header*/
+header {
+	background:linear-gradient(to bottom, #7E57C2, #673AB7);
+}
+header h1 {
+	margin:10px;
+	font-size:18pt; font-weight:bold;
+	color:#FFF;
+}
+
+/*nav*/
+nav {
+	background:linear-gradient(to bottom, #512DA8, #311B92);
+	border-top:1px solid #311B92;
+	border-bottom:1px solid #311B92;
+}
+nav ul {
+	list-style-type:none;
+	margin:0px; padding:0px;
+}
+nav ul li {
+	float:left;
+}
+nav ul li a {
+	display:block;
+	padding:10px 20px 10px 20px;
+	text-decoration:none;
+	border-right:1px solid #311B92;
+	color:#FFF;
+}
+nav ul li a:link, nav ul li a:visited {
+	background:linear-gradient(to bottom, #512DA8, #311B92);
+}
+nav ul li a:hover {
+	background:linear-gradient(to bottom, #311B92, #512DA8);
+}
+
+/* container */
+#container {
+	position:relative;
+	float:left;
+	width:98%;
+	margin: 10px auto 10px 1%;
+	background:#FFF;
+	border:1px solid #CCC;
+	box-shadow:0px 0px 20px #CCC;
+}
+
+#container h1 {
+	margin:10px auto 10px 2%;
+	font-size:14pt; font-weight:bold;
+	color:#673AB7; 
+}
+
+#container table {
+	width:96%;
+	margin:10px 2% 10px 2%;
+	background:#CCC;
+	border-spacing:1px;
+}
+#container table th, #container table td {
+	color:#555;
+	padding:10px 0px 10px 0px;
+	text-align:center;
+	vertical-align:middle;
+}
+#container table th {
+	background:linear-gradient(to bottom, #F5F5F5, #E5E5E5);
+	font-size:14pt; font-weight:bold;
+}
+#container table td {
+	background:#FFF;
+	font-size:12pt;
+}
+
+/* buttons */
+.buttons {
+	position:relative; float:left;
+	margin:0px 2% 0px 2%;
+}
+.buttons button {
+	position:relative; float:left;
+	width:100px;
+	margin:10px 10px 10px 0px; padding:10px 0px 10px 0px;
+	font-size:14pt; font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+}
+.normal {
+	background:linear-gradient(to bottom, #EEE, #CCC); 
+	border:1px solid #CCC;
+}
+.normal:hover {
+	background:linear-gradient(to bottom, #F5F5F5, #DDD); 
+	border:1px solid #DDD;
+}
+
+.ok {
+	background:linear-gradient(to bottom, #66BB6A, #43A047);
+	border:1px solid #43A047;
+}
+.ok:hover {
+	background:linear-gradient(to bottom, #81C784, #66BB6A);
+	border:1px solid #66BB6A;
+}
+.cancel {
+	background:linear-gradient(to bottom, #EF5350, #D32F2F);
+	border:1px solid #D32F2F;
+}
+.cancel:hover {
+	background:linear-gradient(to bottom, #E57373, #EF5350);
+	border:1px solid #EF5350;
+}

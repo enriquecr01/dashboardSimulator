@@ -1,0 +1,150 @@
+* { 
+	font-family:arial; 
+}
+body { 
+	background:#222;
+	margin:0px; 
+}
+/*all*/
+header, #menu, #logo, #user, #content
+{
+	position:relative;
+}
+
+/*header*/
+header 
+{
+	background:#1565C0; 
+	float:left;
+	width:100%;
+}
+
+#menu
+{
+	margin: 25px 10px auto 10px;
+	float: left;
+}
+
+#logo
+{
+	float: left;
+	margin: 10px auto 10px 10px;
+}
+
+#logo img
+{
+	height: 60px
+}
+
+#user 
+{
+	float: right;
+	margin: 0px 0px 0px auto;
+	height: 80px;
+	background: #1565C0;
+}
+
+#user img
+{
+	height: 60px;
+	margin: 10px 0px 10px 0px;
+}
+
+#user table
+{
+	border-spacing: 0px;
+}
+
+#user table td
+{
+	margin: 0px 0px 0px 10px;
+}
+
+
+
+header h1 {
+	margin:10px auto 10px 10px;
+	color:#FFF;
+	font-size:18pt;
+}
+#container {
+	width:100%;
+}
+.form, .formmessage, .formbuttons {
+	position:relative; 
+	float:center;
+	width:50%;
+}
+.form {
+	margin:50px auto auto auto;
+}
+.form label, .form input, .form select {
+	color:#FFF;
+	font-size:14pt;
+}
+.form label {
+	display:block;
+	width:calc(100% - 5px);
+	margin:10px auto 4px 5px;
+}
+.form input, .form select {
+	background: #444;
+	width:100%;
+	margin-bottom:10px;
+	padding:10px;
+	border-radius:5px;
+	border:1px solid #444;
+	-webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.form input:focus, .form select:focus {
+	color:#EEE;
+	background:#737373;
+	outline-width:0px;
+	border:1px solid #FFF;
+}
+.form input::placeholder {
+	color:#CCC;
+}
+.formmessage {
+	height:30px;
+	margin:0px auto auto auto;
+	color: #FFF;
+}
+.formmessage label {
+	color: #FFFFFF;
+	font-size:14pt;
+	font-weight:bold;
+	display:block;
+	margin:auto;
+}
+.formbuttons {
+	text-align:center;
+	vertical-align:bottom;
+	margin:20px auto auto auto;
+	height:50px;
+}
+.formbuttons button {
+	position:relative;
+	float:center;
+	width:120px;
+	height:40px;
+	font-size:14pt;
+	color:#FFF;
+	border-radius:5px;
+	margin:0px 10px 0px 10px;
+	cursor:pointer;
+	border:0px;
+}
+.ok {
+	background:#81C784;
+}
+.ok:hover {
+	background:#4CAF50;
+}
+.cancel {
+	background:#E57373;
+}
+.cancel:hover {
+	background:#F44336;
+}

@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Home</title>
+		<!--style sheets-->
+		<link href="css/lightsideflat.css" rel="stylesheet"></link>
+		<!--scripts-->
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/highcharts.js"></script>
+		<link href="css/datapicker/datepicker3.css" rel="stylesheet">
+		<script src="js/datapicker/bootstrap-datepicker.js"></script>
+
+	</head>
+	<body onload="init()">
+		<header id="nav">
+			<div id="menu">
+				<img src="images/menu.png" onclick="showMenu()" style="cursor: pointer; margin-top: 10px; height: 35px"></img>
+			</div>
+			<div id="logo">
+				<img src="images/utt_white.png"></img>
+			</div>
+			<div id="user">
+				<table>
+					<tr>
+						<td id="username">
+							<div>
+								<button onclick="changeType(1)" class="buttonFilterDisabled">Container</button>
+								<button onclick="changeType(2)">Duck food</button>
+							</div>
+							<div class="form-group">
+                    			<div class="input-group date">
+                      				<span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" id="fechaRegistro" placeholder="Ingresar fecha">
+                    			</div>
+                  			</div>
+						</td>				
+						<td rowspan="2"><button onclick="logout()">See graphic</button></td>
+					</tr>
+				</table>
+			</div>
+			<div id="title">
+				<h1>Home</h1>
+			</div>
+		</header>
+		<div id="sidemenu">
+		</div>
+		<div id="content">
+			<div id="chart"></div>
+			<div id="chart2" style="display: none;"></div>
+		</div>
+	</body>
+</html>

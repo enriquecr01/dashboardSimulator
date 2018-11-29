@@ -1,0 +1,189 @@
+* {
+	font-family:arial;
+}
+body {
+	margin:0px;
+	background:#222;
+}
+
+/*all*/
+header, nav {
+	position:relative;
+	float:left;
+	width:100%;
+}
+
+/*header*/
+header {
+	background:linear-gradient(to bottom, #666, #444);
+}
+
+/*nav*/
+nav {
+	background:linear-gradient(to bottom, #512DA8, #311B92);
+	border-top:1px solid #311B92;
+	border-bottom:1px solid #311B92;
+}
+nav ul {
+	list-style-type:none;
+	margin:0px; padding:0px;
+}
+nav ul li {
+	float:left;
+}
+nav ul li a {
+	display:block;
+	padding:10px 20px 10px 20px;
+	text-decoration:none;
+	border-right:1px solid #311B92;
+	color:#FFF;
+}
+nav ul li a:link, nav ul li a:visited {
+	background:linear-gradient(to bottom, #512DA8, #311B92);
+}
+nav ul li a:hover {
+	background:linear-gradient(to bottom, #311B92, #512DA8);
+}
+
+/* title */
+#title {
+	position:reative;
+	float:left;
+}
+
+#title h1 {
+	margin:10px;
+	font-size:18pt; font-weight:bold;
+	color:#FFF;
+}
+
+/* user */
+#user {
+	position:relative;
+	float:right;
+	background:linear-gradient(to bottom, #444, #666);
+	margin:5px;
+}
+#user label {
+	font-size:12pt;
+	color:#FFF;
+	margin:10px;
+}
+
+#user button { 
+	margin:5px; padding:5px;
+	font-size:10pt; font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+	background:linear-gradient(to bottom, #AAA, #888); 
+	border:1px solid #888;
+}
+
+/* container */
+#container, #smallcontainer {
+	position:relative;
+	float:left;
+	background:linear-gradient(to bottom, #666, #444);
+	border:1px solid #666;
+	box-shadow:0px 0px 20px #000;
+}
+#container {
+	width:98%;
+	margin: 10px auto 10px 1%;
+}
+#smallcontainer {
+	width:50%;
+	margin: 50px auto 10px 25%;
+}
+
+#container h1, #smallcontainer h1 {
+	margin:10px auto 10px 2%;
+	font-size:14pt; font-weight:bold;
+	color:#FFF; 
+}
+
+#container table, #smallcontainer table {
+	width:96%;
+	margin:10px 2% 10px 2%;
+	background:#666;
+	border-spacing:1px;
+}
+#container table th, #container table td, #smallcontainer table th, #smallcontainer table td{
+	color:#EEE;
+	padding:10px 0px 10px 0px;
+	text-align:center;
+	vertical-align:middle;
+}
+#container table th, #smallcontainer table th {
+	background:linear-gradient(to bottom, #666, #555);
+	font-size:14pt; font-weight:bold;
+}
+#container table td, #smallcontainer table td {
+	background:#777;
+	font-size:12pt;
+}
+#container label, #smallcontainer label {
+	float:left;
+	width:90%;
+	margin:10px auto 0px 5%;
+}
+#container input, #smallcontainer input {
+	float:left;
+	width:90%;
+	margin:10px auto 0px 5%;
+	padding:10px 0px 10px 10px;
+	font-size:14pt;
+	background:#444;
+	border:1px solid #666;
+	color:#EEE;
+}
+.label {
+	font-size:12pt;
+	color:#EEE;
+}
+.error {
+	font-size:14pt; font-weight:bold;
+	color:#EF5350;
+	height:30px;
+}
+
+/* buttons */
+.buttons {
+	position:relative; float:left;
+	width:100%;
+	text-align:center;
+	margin:0px;
+}
+.buttons button {
+	position:relative; float:center;
+	width:100px;
+	margin:10px 10px 10px 0px; padding:10px 0px 10px 0px;
+	font-size:14pt; font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+}
+.normal {
+	background:linear-gradient(to bottom, #888, #666); 
+	border:1px solid #666;
+}
+.normal:hover {
+	background:linear-gradient(to bottom, #999, #777); 
+	border:1px solid #777;
+}
+
+.ok {
+	background:linear-gradient(to bottom, #66BB6A, #43A047);
+	border:1px solid #43A047;
+}
+.ok:hover {
+	background:linear-gradient(to bottom, #81C784, #66BB6A);
+	border:1px solid #66BB6A;
+}
+.cancel {
+	background:linear-gradient(to bottom, #EF5350, #D32F2F);
+	border:1px solid #D32F2F;
+}
+.cancel:hover {
+	background:linear-gradient(to bottom, #E57373, #EF5350);
+	border:1px solid #EF5350;
+}

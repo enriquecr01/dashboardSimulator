@@ -1,0 +1,6 @@
+{
+	"server" : "localhost",
+	"database" : "rfood",
+	"user" : "root",
+	"password" : ""
+}
