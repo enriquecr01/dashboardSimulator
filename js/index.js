@@ -78,17 +78,70 @@ function showDevices(devices)
 function changeType(value)
 {
     type = value;
-    if (value == 1) 
+    var date = document.getElementById("fechaRegistro").value;
+    /*Desde aqui se empieza a obtener la fecha actual*/
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd < 10) { dd = '0'+dd } 
+    if(mm < 10) { mm = '0'+mm } 
+    today = dd + '/' + mm + '/' + yyyy;
+    /*Aqui termina*/
+    if (globalIdMac == "") 
     {
-        document.getElementById('chart').style.display = "block";
-        document.getElementById('chart2').style.display = "none";
+        swal("Select a device", "Select a device to graphic with the date selected", "warning");
     }
     else
     {
-        document.getElementById('chart').style.display = "none";
-        document.getElementById('chart2').style.display = "block";
+        if (date == today || date == "") 
+        {
+            if (value == 1) 
+            {
+                document.getElementById('chart').style.display = "block";
+                document.getElementById('chart2').style.display = "none";
+            }
+            else
+            {
+                document.getElementById('chart').style.display = "none";
+                document.getElementById('chart2').style.display = "block";
+            }
+            settingInteval(globalIdMac);
+        }
+        else
+        {
+            if (value == 1) 
+            {
+                document.getElementById('chart').style.display = "block";
+                document.getElementById('chart2').style.display = "none";
+            }
+            else
+            {
+                document.getElementById('chart').style.display = "none";
+                document.getElementById('chart2').style.display = "block";
+            }
+
+            clearInterval(interval);
+            var x = new XMLHttpRequest();
+            //prepare request
+            x.open('GET', '/dashboard2/apis/devices.php?idMac=' + globalIdMac +'&typeGraphic=' + type + "&date=" + date);
+            x.send(); // send request
+            x.onreadystatechange = function()
+            {
+                //readyState = 4 : back with data
+                //status == 200 : succesfull response from API
+                if (x.readyState == 4 && x.status == 200) 
+                {
+                    var jsonData = JSON.parse(x.responseText);
+                    if (jsonData.status == 0) 
+                    {
+                        prepareChart(jsonData);
+                    }
+                }
+            }
+        }
     }
-    settingInteval(globalIdMac);
 }
 
 function getValues(idMac)
@@ -134,7 +187,7 @@ function settingInteval(mac)
 //prepare chart
 function prepareChart(data) 
 {
-    console.log('Preparing chart...');
+    var date = document.getElementById("fechaRegistro").value;
     //data arrays
     if (type == 1) 
     {
@@ -149,7 +202,7 @@ function prepareChart(data)
             totalLatas = totalLatas + parseInt(item.total);
             if (max <  item.total) { max = parseInt(item.total); }
         });
-        drawContainerChart('Contenedor de ' + data.device.description, "Latas totales colectadas " + totalLatas, xAxisContainerCategories, "Total de latas colectadas entre horas", seriesContainerData, max);
+        drawContainerChart('Container of ' + data.device.description, "Cans collected " + totalLatas  + " in date " + date, xAxisContainerCategories, "Total of cans collected between hours", seriesContainerData, max);
     }
     else
     {
@@ -164,7 +217,7 @@ function prepareChart(data)
             totalDispensar = totalDispensar + parseInt(item.total);
             if (max <  item.total) { max = parseInt(item.total); }
         });
-        drawDuckChart('Contenedor de ' + data.device.description, "Latas totales colectadas " + totalDispensar, xAxisContainerCategories, "Total de latas colectadas entre horas", seriesContainerData, max);
+        drawDuckChart('Container of ' + data.device.description, "Grams dispensed " + totalDispensar  + " in date " + date, xAxisContainerCategories, "Total of grams dispensed between hours", seriesContainerData, max);
     }
 }
 
@@ -268,6 +321,56 @@ function drawContainerChart(chartTitle, chartSubtitle, xAxisCategories, seriesNa
             }
         ]
     });
+}
+
+function graphic()
+{
+    var date = document.getElementById("fechaRegistro").value;
+    /*Desde aqui se empieza a obtener la fecha actual*/
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd < 10) { dd = '0'+dd } 
+    if(mm < 10) { mm = '0'+mm } 
+    today = dd + '/' + mm + '/' + yyyy;
+    /*Aqui termina*/
+    console.log(today);
+    console.log(date);
+    if (globalIdMac == "") 
+    {
+        swal("Select a device", "Select a device to graphic with the date selected", "warning");
+    }
+    else
+    {
+        if (date == today || date == "") 
+        {
+            settingInteval(globalIdMac);
+        }
+        else
+        {
+            clearInterval(interval);
+            var x = new XMLHttpRequest();
+            //prepare request
+            x.open('GET', '/dashboard2/apis/devices.php?idMac=' + globalIdMac +'&typeGraphic=' + type + "&date="+date);
+            x.send(); // send request
+            x.onreadystatechange = function()
+            {
+                //readyState = 4 : back with data
+                //status == 200 : succesfull response from API
+                if (x.readyState == 4 && x.status == 200) 
+                {
+                    var jsonData = JSON.parse(x.responseText);
+                    if (jsonData.status == 0) 
+                    {
+                        prepareChart(jsonData);
+                    }
+                }
+            }
+        }
+
+    }
 }
 
 //show menu

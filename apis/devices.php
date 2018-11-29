@@ -99,6 +99,94 @@
                   ));
 
 		}
+
+            else if (isset($_GET['idMac']) && isset($_GET['typeGraphic']) && isset($_GET['date'])) 
+            {
+                  $connection = new MySqlServerConnection();
+                  date_default_timezone_set('America/Tijuana');
+                  $i = 0;
+
+                  $replacing = str_replace("/", "-", $_GET['date']);
+                  $dt = new DateTime($replacing);
+                  $dateFomatted = $dt->format('Y-m-d');
+
+                  $readingDuck = array();
+                  $readingContainer = array();
+
+                  if ($_GET['typeGraphic'] == 1) 
+                  {
+                        while ($i <= 22) 
+                        {
+                              $query = 'SELECT SUM(quantity) as result
+                                    FROM container
+                                    WHERE idMac = ? AND time >= ? AND time <= ? AND date = ?';
+                              $result = $connection->executeQuery($query, array($_GET['idMac'], $hours[$i], $hours59[$i], $dateFomatted));
+
+                              if(isset($result[0][0])) { }
+                              else { $result[0][0] = 0; }
+
+
+                              $container = array(
+                                    "bethours" => $hours[$i]." - ".$hours59[$i],
+                                    "total" => $result[0][0]
+                              );
+                              array_push($readingContainer, $container);
+                              $i++;
+                        }     
+                  }
+                  else
+                  {
+                        while ($i <= 22) 
+                        {
+
+                              $query = 'SELECT SUM(weight) as result
+                                    FROM duckfoodhistory
+                                    WHERE idMac = ? AND time >= ? AND time <= ? AND date = ?';
+                              $result = $connection->executeQuery($query, array($_GET['idMac'], $hours[$i], $hours59[$i], $dateFomatted));
+
+                              if(isset($result[0][0])) { }
+                              else { $result[0][0] = 0; }
+
+                              $duck = array(
+                                    "bethours" => $hours[$i]." - ".$hours59[$i],
+                                    "total" => $result[0][0]
+                              );
+                              array_push($readingDuck, $duck);
+                              $i++;
+                        }
+                  }
+
+                  $query = 'SELECT idMac, description, ipAddress, totalLifeCans
+                              FROM devices
+                              WHERE idMac = ?';
+                  $result = $connection->executeQuery($query, array($_GET['idMac']));
+
+                  if ($_GET['typeGraphic'] == 1) 
+                  {
+                        $device = array(
+                              'idMac' => $result[0][0],
+                              'description' => $result[0][1],
+                              'ipAddress' => $result[0][2],
+                              'totalLifeCans' => $result[0][3],
+                              'readingsContainer' => $readingContainer
+                        );
+                  }
+                  else
+                  {
+                        $device = array(
+                              'idMac' => $result[0][0],
+                              'description' => $result[0][1],
+                              'ipAddress' => $result[0][2],
+                              'totalLifeCans' => $result[0][3],
+                              'readingsDuck' => $readingDuck
+                        );
+                  }
+                  echo json_encode(array(
+                              'status' => 0,
+                              'device' => $device
+                  ));
+            }
+
 		else
 		{
       		$connection = new MySqlServerConnection();
